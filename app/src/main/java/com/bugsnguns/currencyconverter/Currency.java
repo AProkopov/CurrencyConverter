@@ -14,7 +14,7 @@ public class Currency {
 
     private String name;
 
-    private double value;
+    private String value;
 
     public int getNumCode() {
         return NumCode;
@@ -48,16 +48,16 @@ public class Currency {
         this.name = name;
     }
 
-    public double getValue() {
+    public String getValue() {
         return value;
     }
 
-    public void setValue(double value) {
+    public void setValue(String value) {
         this.value = value;
     }
 
     @Override
     public String toString() {
-        return ("NumCode + " + getNumCode() + "\n" + "CharCode + " + getCharCode());
+        return ("NumCode " + getNumCode() + "\n" + "CharCode " + getCharCode());
     }
 }

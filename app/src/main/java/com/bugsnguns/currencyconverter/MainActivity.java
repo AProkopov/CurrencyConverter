@@ -3,9 +3,15 @@ package com.bugsnguns.currencyconverter;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Iterator;
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -13,18 +19,36 @@ public class MainActivity extends AppCompatActivity {
     public String [] currencyNames;
     public Spinner currencySpinnerFrom;
     public Spinner currencySpinnerTo;
-    public static Context context;
+    public List<Currency> currencies;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         spinnerBuilder();
+
+        try {
+            XMLPullParserHandler parser = new XMLPullParserHandler();
+            currencies = parser.parse(getAssets().open("currency.xml"));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     //обработка нажатия кнопки Convert
     public void onConvertClick (View view) throws Exception{
         //тело метода
+        //testMethod();
+        Log.v("YEeh", currencies.get(34).toString());
+    }
+
+    public void testMethod () {
+        Iterator<Currency> iterator = currencies.iterator();
+        while (iterator.hasNext()){
+            iterator.next().toString();
+        }
     }
 
     //метод spinnerBuilder() заполняет раскрывающиеся списки значениями
