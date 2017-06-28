@@ -1,37 +1,63 @@
 package com.bugsnguns.currencyconverter;
 
-import android.util.Log;
-
-import org.simpleframework.xml.Element;
-import org.simpleframework.xml.Root;
-
 /**
  * Created by Antonio on 25.06.2017.
  */
 
-@Root(name="Valute")
 public class Currency {
 
-    @Element (name = "CharCode")
-    public String charCode;
+    private int NumCode;
 
-    @Element (name = "Nominal")
-    public int nominal;
+    private String charCode;
 
-    @Element (name = "Name")
-    public String name;
+    private int nominal;
 
-    @Element (name = "Value")
-    public double value;
+    private String name;
 
-    //конструктор
-    public Currency (String charCode, int nominal, String name, double value){
-        this.charCode = charCode;
-        this.nominal = nominal;
-        this.name = name;
-        this.value = value;
-        Log.v("currency created", name);
+    private double value;
+
+    public int getNumCode() {
+        return NumCode;
     }
 
+    public void setNumCode(int numCode) {
+        NumCode = numCode;
+    }
 
+    public String getCharCode() {
+        return charCode;
+    }
+
+    public void setCharCode(String charCode) {
+        this.charCode = charCode;
+    }
+
+    public int getNominal() {
+        return nominal;
+    }
+
+    public void setNominal(int nominal) {
+        this.nominal = nominal;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getValue() {
+        return value;
+    }
+
+    public void setValue(double value) {
+        this.value = value;
+    }
+
+    @Override
+    public String toString() {
+        return ("NumCode + " + getNumCode() + "\n" + "CharCode + " + getCharCode());
+    }
 }

@@ -1,27 +1,30 @@
 package com.bugsnguns.currencyconverter;
 
-import android.provider.Settings;
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 
 public class MainActivity extends AppCompatActivity {
 
     public String [] currencyNames;
     public Spinner currencySpinnerFrom;
     public Spinner currencySpinnerTo;
+    public static Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         spinnerBuilder();
+    }
+
+    //обработка нажатия кнопки Convert
+    public void onConvertClick (View view) throws Exception{
+        //тело метода
     }
 
     //метод spinnerBuilder() заполняет раскрывающиеся списки значениями
