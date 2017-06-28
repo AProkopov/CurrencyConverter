@@ -1,4 +1,6 @@
-package com.bugsnguns.currencyconverter;
+package com.bugsnguns.currencyconverter.Controller;
+
+import com.bugsnguns.currencyconverter.Model.Currency;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;

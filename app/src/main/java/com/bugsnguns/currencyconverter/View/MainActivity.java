@@ -1,4 +1,4 @@
-package com.bugsnguns.currencyconverter;
+package com.bugsnguns.currencyconverter.View;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +9,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import com.bugsnguns.currencyconverter.Model.Currency;
+import com.bugsnguns.currencyconverter.R;
+import com.bugsnguns.currencyconverter.Controller.XMLPullParserHandler;
+
 import java.math.BigDecimal;
 import java.io.IOException;
 import java.util.List;

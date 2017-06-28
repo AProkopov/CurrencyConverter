@@ -1,4 +1,4 @@
-package com.bugsnguns.currencyconverter;
+package com.bugsnguns.currencyconverter.Model;
 
 /**
  * Created by Antonio on 25.06.2017.
