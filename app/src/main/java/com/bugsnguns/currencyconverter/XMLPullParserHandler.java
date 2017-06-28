@@ -2,7 +2,6 @@ package com.bugsnguns.currencyconverter;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
-
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +10,8 @@ import java.util.List;
  * Created by Antonio on 28.06.2017.
  */
 
+//Парсер xml-файла с данными у курсах валют
+//Позволяет получить все данные о валютах, предоставляемых ЦБ в xml-файле
 public class XMLPullParserHandler {
 
     List<Currency> currencies;
@@ -29,7 +30,7 @@ public class XMLPullParserHandler {
 
     public List<Currency> parse(InputStream is) {
 
-        //Костыль для рубля, т.к. xml-файл от ЦБ не содержит о нем информации
+        //Костыль для рубля, т.к. xml-файл от ЦБ не содержит информации о нем
         rubCurrency = new Currency();
         rubCurrency.setNumCode(1);
         rubCurrency.setCharCode("RUB");
@@ -90,8 +91,5 @@ public class XMLPullParserHandler {
 
         currencies.add(rubCurrency);
         return currencies;
-
-
-
     }
 }

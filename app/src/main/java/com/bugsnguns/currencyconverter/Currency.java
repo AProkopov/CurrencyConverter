@@ -4,6 +4,7 @@ package com.bugsnguns.currencyconverter;
  * Created by Antonio on 25.06.2017.
  */
 
+//Валюта (для заполнения данными из xml-файла ЦБ)
 public class Currency {
 
     private int NumCode;
@@ -54,10 +55,5 @@ public class Currency {
 
     public void setValue(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return ("NumCode " + getNumCode() + "\n" + "CharCode " + getCharCode());
     }
 }

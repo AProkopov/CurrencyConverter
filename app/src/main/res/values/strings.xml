@@ -2,13 +2,12 @@
     <string name="app_name">CurrencyConverter</string>
     <string name="convert_from">From</string>
     <string name="convert_to">To</string>
-    <string name="currency_name">название валюты</string>
+    <string name="currency_name">Австралийский доллар</string>
     <string name="button_text">CONVERT</string>
-    <string name="edit_text_hint">конвертируемая сумма</string>
+    <string name="edit_text_hint">введите сумму</string>
     <string name="text_view_hint">0.00</string>
 
     <string-array name="currency_names">
-        <item>RUB</item>
         <item>AUD</item>
         <item>AZN</item>
         <item>GBP</item>
@@ -20,6 +19,7 @@
         <item>HKD</item>
         <item>DKK</item>
         <item>USD</item>
+        <item>EUR</item>
         <item>INR</item>
         <item>KZT</item>
         <item>CAD</item>
@@ -31,7 +31,7 @@
         <item>RON</item>
         <item>XDR</item>
         <item>SGD</item>
-        <item>TGS</item>
+        <item>TJS</item>
         <item>TRY</item>
         <item>TMT</item>
         <item>UZS</item>
@@ -42,6 +42,7 @@
         <item>ZAR</item>
         <item>KRW</item>
         <item>JPY</item>
+        <item>RUB</item>
     </string-array>
 
 </resources>
