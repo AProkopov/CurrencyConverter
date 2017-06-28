@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         //парсим xml-файл, содержащий информацию о курсах вылют
         try {
             XMLPullParserHandler parser = new XMLPullParserHandler();
-            currencies = parser.parse(getAssets().open("currency.xml"));
+            currencies = parser.parse(getAssets().open(parser.getXMLURI()));
 
         } catch (IOException e) {
             e.printStackTrace();

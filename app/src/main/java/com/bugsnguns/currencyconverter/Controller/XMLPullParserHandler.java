@@ -21,6 +21,11 @@ public class XMLPullParserHandler {
     private Currency currency;
     private String text;
     public Currency rubCurrency;
+    private final String XMLURI = "currency.xml";
+
+    public String getXMLURI() {
+        return XMLURI;
+    }
 
     public XMLPullParserHandler() {
         currencies = new ArrayList<Currency>();
