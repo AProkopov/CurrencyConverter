@@ -9,11 +9,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
-
 import com.bugsnguns.currencyconverter.Model.Currency;
 import com.bugsnguns.currencyconverter.R;
 import com.bugsnguns.currencyconverter.Controller.XMLPullParserHandler;
-
 import java.math.BigDecimal;
 import java.io.IOException;
 import java.util.List;
@@ -33,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     public TextView textViewTo;
     public EditText editText;
     public TextView resultView;
+    public XMLPullParserHandler parser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,11 +47,19 @@ public class MainActivity extends AppCompatActivity {
         editText = (EditText) findViewById(R.id.editText);
         resultView = (TextView) findViewById(R.id.resultView);
 
-
         //парсим xml-файл, содержащий информацию о курсах вылют
         try {
-            XMLPullParserHandler parser = new XMLPullParserHandler();
-            currencies = parser.parse(getAssets().open(parser.getXMLURI()));
+            parser = new XMLPullParserHandler();
+            parser.fetchXML();
+
+            if (parser.connectionSuccessfull) {
+                currencies.clear();
+                currencies = parser.parse(parser.getStream());
+            }
+
+            else {
+                currencies = parser.parse(getAssets().open(parser.getXMLURI()));
+            }
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -61,13 +68,24 @@ public class MainActivity extends AppCompatActivity {
 
     //обработка нажатия кнопки Convert
     public void onConvertClick (View view) throws Exception{
+
         //конвертация и вывод результата
-        double valueFrom = Double.parseDouble(currencyFrom.getValue().replace(",", "."));
-        double valueTo = Double.parseDouble(currencyTo.getValue().replace(",", "."));
-        double amount = Double.parseDouble(editText.getText().toString());
-        BigDecimal result = (BigDecimal.valueOf((valueFrom/currencyFrom.getNominal() /
-                (valueTo/currencyTo.getNominal()))*amount)).setScale(2, BigDecimal.ROUND_UP);
-        resultView.setText(result.toString());
+        try {
+            double valueFrom = Double.parseDouble(currencyFrom.getValue().replace(",", "."));
+            double valueTo = Double.parseDouble(currencyTo.getValue().replace(",", "."));
+            double amount = Double.parseDouble(editText.getText().toString());
+            BigDecimal result = (BigDecimal.valueOf((valueFrom / currencyFrom.getNominal() /
+                    (valueTo / currencyTo.getNominal())) * amount)).setScale(2, BigDecimal.ROUND_UP);
+            resultView.setText(result.toString());
+
+            //проверяем, был ли получен InputStream stream по URL. Если нет, пробуем получить.
+            if (!parser.connectionSuccessfull) {
+                parser.fetchXML();
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     //метод spinnerBuilder() заполняет раскрывающиеся списки значениями
